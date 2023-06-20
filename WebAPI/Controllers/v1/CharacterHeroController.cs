@@ -10,13 +10,13 @@ using System.Text.Json;
 namespace WebAPI.Controllers.v1
 {
     [ApiVersion("1.0")]
-    public class MarvelApiController : BaseApiController
+    public class CharacterHeroController : BaseApiController
     {
         private readonly IHttpClientFactory _clientFactory;
         private readonly TeamServices _teamServices;
 
 
-        public MarvelApiController(IHttpClientFactory clientFactory,TeamServices context)
+        public CharacterHeroController(IHttpClientFactory clientFactory,TeamServices context)
         {
             _clientFactory = clientFactory;
             _teamServices = context;

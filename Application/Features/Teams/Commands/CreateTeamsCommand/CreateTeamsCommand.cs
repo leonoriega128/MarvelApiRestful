@@ -4,7 +4,7 @@ using AutoMapper;
 using Domain.Entities;
 using MediatR;
 
-namespace Application.Features.Teams.CreateTeamsCommand
+namespace Application.Features.Teams.Commands.CreateTeamsCommand
 {
     public class CreateTeamsCommand : IRequest<Response<int>>
     {

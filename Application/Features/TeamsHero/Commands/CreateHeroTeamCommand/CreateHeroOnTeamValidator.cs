@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Features.Teams.AddHeroTeam
+namespace Application.Features.TeamsHero.Commands.CreateHeroTeamCommand
 {
     public class CreateHeroOnTeamValidator : AbstractValidator<CreateHeroOnTeamCommand>
     {

@@ -1,7 +1,7 @@
 ﻿using Application.DTOs;
 using Application.Features.CharactersHero.Commands.CreateCharactersCommand;
-using Application.Features.Teams.AddHeroTeam;
-using Application.Features.Teams.CreateTeamsCommand;
+using Application.Features.Teams.Commands.CreateTeamsCommand;
+using Application.Features.TeamsHero.Commands.CreateHeroTeamCommand;
 using AutoMapper;
 using Domain.Entities;
 

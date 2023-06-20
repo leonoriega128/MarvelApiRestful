@@ -18,6 +18,7 @@ namespace Persistence.Interfaces
 
         public Task<List<CharacterHeroDTO?>> SearchByID(int characters);
         public Task<List<TeamsDTO?>> GetAllTeams();
+        public Task<int> SearchByIDTeamIDHero(int idHero, int idTeam);
 
         }
 }

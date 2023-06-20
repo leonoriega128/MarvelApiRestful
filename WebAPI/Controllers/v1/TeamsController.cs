@@ -1,9 +1,11 @@
-﻿using Application.Features.Teams.AddHeroTeam;
-using Application.Features.Teams.CreateTeamsCommand;
+﻿using Application.Features.Teams.Commands.CreateTeamsCommand;
+using Application.Features.Teams.Commands.DeleteTeamsCommand;
+using Application.Features.Teams.Commands.UpdateTeamsCommand;
+using Application.Features.TeamsHero.Commands.CreateHeroTeamCommand;
+using Application.Features.TeamsHero.Commands.DeleteTeamsHeroCommand;
 using Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Persistence.Interfaces;
-using Persistence.Services;
 
 namespace WebAPI.Controllers.v1
 {
@@ -82,7 +84,7 @@ namespace WebAPI.Controllers.v1
             }
         }
 
-        [HttpPost]
+        [HttpGet]
         [Route("RescueTeam")]
         public async Task<IActionResult> RescueTeam()
         {
@@ -90,6 +92,37 @@ namespace WebAPI.Controllers.v1
             return Ok(response);
         }
 
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Put(int id, UpdateTeamsCommand command)
+        {
+            if (id != command.Id)
+                return BadRequest();
+
+            return Ok(await Mediator.Send(command));
+        }
+
+
+        [HttpDelete("Team/{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            return Ok(await Mediator.Send(new DeleteTeamsCommand { Id = id }));
+        }
+
+
+        [HttpDelete("HeroIntoTeam/{idTeam}/{idHero}")]
+        public async Task<IActionResult> HeroIntoTeam(int idHero, int idTeam)
+        {
+            var question = await _teamServices.SearchByIDTeamIDHero(idHero, idTeam);
+            if (question == 0)
+            {
+                return BadRequest("El heroe no pertenece al equipo ingresado");
+            }
+            else
+            {
+                return Ok(await Mediator.Send(new DeleteTeamsHeroCommand { Id = question }));
+            }
+        }
 
     }
 }

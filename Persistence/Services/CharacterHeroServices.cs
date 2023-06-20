@@ -10,8 +10,5 @@ namespace Persistence.Services
     public class CharacterHeroServices
     {
        
-
-      
-
     }
 }

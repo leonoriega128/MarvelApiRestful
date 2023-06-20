@@ -110,6 +110,34 @@ namespace Persistence.Services
             }
         }
 
+
+        public async Task<int> SearchByIDTeamIDHero(int idHero, int idTeam)
+        {
+            try
+            {
+                var query = from c in _context.TeamsHero
+                            where c.IdHero == idHero && c.IdTeam == idTeam
+                            select new TeamHeroDTO
+                            {
+                                Id = c.Id
+                            };
+
+                var result = await query.FirstOrDefaultAsync();
+
+                if (result != null)
+                {
+                    return result.Id;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+        }
     }
 
 }

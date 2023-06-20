@@ -17,7 +17,6 @@
 
   <ItemGroup>
     <Folder Include="Features\CharactersHero\Queries\GetAllCharacters\" />
-    <Folder Include="Features\Teams\NewFolder\" />
     <Folder Include="Filters\" />
   </ItemGroup>
 
