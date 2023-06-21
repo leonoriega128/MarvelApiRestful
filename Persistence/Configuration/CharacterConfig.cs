@@ -30,6 +30,8 @@ namespace Persistence.Configuration
                 .IsRequired();
             builder.Property(x => x.Intelligence)
                 .IsRequired();
+            builder.Property(x => x.MarvelID)
+                .IsRequired();
 
         }
     }

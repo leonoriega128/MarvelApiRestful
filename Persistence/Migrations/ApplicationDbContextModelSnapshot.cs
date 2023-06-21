@@ -33,7 +33,7 @@ namespace Persistence.Migrations
                     b.Property<int>("Agility")
                         .HasColumnType("int");
 
-                    b.Property<bool>("Capturado")
+                    b.Property<bool>("Captured")
                         .HasColumnType("bit");
 
                     b.Property<DateTime>("Created")
@@ -47,6 +47,9 @@ namespace Persistence.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("Intelligence")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MarvelID")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("ModifiedDate")
@@ -65,51 +68,6 @@ namespace Persistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Character", (string)null);
-                });
-
-            modelBuilder.Entity("Domain.Entities.Cliente", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Apellido")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("Created")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Direccion")
-                        .IsRequired()
-                        .HasMaxLength(120)
-                        .HasColumnType("nvarchar(120)");
-
-                    b.Property<int>("Edad")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("FechaNacimiento")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Nombre")
-                        .IsRequired()
-                        .HasMaxLength(80)
-                        .HasColumnType("nvarchar(80)");
-
-                    b.Property<string>("Telefono")
-                        .IsRequired()
-                        .HasMaxLength(9)
-                        .HasColumnType("nvarchar(9)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Clientes", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.TeamsRescue", b =>

@@ -64,6 +64,7 @@ namespace WebAPI.Controllers.v1
                         {
                             var resp = item;
                             var question = await _teamServices.SearchByID(int.Parse(resp.ToString()));
+                            
                             if (question != null)
                             {
                                 commandHeros.IdTeam = data;

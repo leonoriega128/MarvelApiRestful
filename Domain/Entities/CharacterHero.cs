@@ -17,7 +17,9 @@ namespace Domain.Entities
         public int Agility { get; set; }
         public int Force { get; set; }
 
-        public bool Capturado { get; set; }
+        public bool Captured { get; set; }
+
+        public int MarvelID { get; set; }
 
       
 
@@ -35,6 +37,7 @@ namespace Domain.Entities
 
     public class MarvelCharacter
     {
+        public int id { get; set; }
         public string Name { get; set; }
         public string? Description { get; set; }
         public MarvelUrlImage? thumbnail { get; set; }
@@ -57,5 +60,34 @@ namespace Domain.Entities
         public string path { get; set; }
         public string extension { get; set; }
     }
- 
+    public class MarvelCharacterVillianDataWrapper
+    {
+        public MarvelCharacterVillianDataContainer Data { get; set; }
+    }
+
+    public class MarvelCharacterVillianDataContainer
+    {
+        public MarvelCharacter[] Results { get; set; }
+    }
+
+    public class MarvelCharacterVillian
+    {
+        public int id { get; set; }
+        public string Name { get; set; }
+        public string? Description { get; set; }
+        public MarvelUrlImage? thumbnail { get; set; }
+        public string? modified { get; set; }
+        public MarvelSeriesList Series { get; set; }
+    }
+
+    public class MarvelStories
+    {
+        public MarvelStories[] Items { get; set; }
+    }
+
+    public class MarvelSeriesStories
+    {
+        public string Name { get; set; }
+    }
+
 }

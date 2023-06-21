@@ -18,6 +18,7 @@ namespace Application.DTOs
         public int Agility { get; set; }
         public int Force { get; set; }
 
-        public bool Capturado { get; set; }
+        public bool Captured { get; set; }
+        public int MarvelID { get; set; }
     }
 }

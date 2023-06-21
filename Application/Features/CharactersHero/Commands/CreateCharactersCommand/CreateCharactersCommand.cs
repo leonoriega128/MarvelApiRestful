@@ -22,7 +22,8 @@ namespace Application.Features.CharactersHero.Commands.CreateCharactersCommand
         public int Intelligence { get; set; }
         public int Agility { get; set; }
         public int Force { get; set; }
-        public bool Capturado { get; set; }
+        public bool Captured { get; set; }
+        public int MarvelID { get; set; }
 
     }
     public class CreateCharacterCommandHandler : IRequestHandler<CreateCharacterCommand, Response<int>>

@@ -43,7 +43,7 @@ namespace WebAPI.Controllers.v1
                 var publicKey = "555f06eb9d76cc0ee29e880bb815014a";
                 var privateKey = "818aa04060ee52f3441103f9daa9ba321f224227";
                 var timestamp = 1;
-                var hash = GetMD5Hash(timestamp + privateKey + publicKey);
+                var hash = _teamServices.GetMD5Hash(timestamp + privateKey + publicKey);
 
                 var url = $"https://gateway.marvel.com/v1/public/characters?nameStartsWith={charAux}&ts={timestamp}&apikey={publicKey}&hash={hash}";
 
@@ -62,6 +62,8 @@ namespace WebAPI.Controllers.v1
 
                     foreach ( var character in avengersCharacters )
                     {
+
+                        command.MarvelID = character.id;
                         command.Name = character.Name;
                         command.Description = character.Description?.Substring(0, Math.Min(character.Description.Length, 250)) ?? "Sin descripción";
                         command.UrlImage = character.thumbnail.path + "." + character.thumbnail.extension ;
@@ -69,7 +71,7 @@ namespace WebAPI.Controllers.v1
                         command.Force = random.Next(1, 101);
                         command.Agility = random.Next(1, 101);
                         command.ModifiedDate = DateTime.Parse(character.modified ?? "");
-                        command.Capturado = _teamServices.IsCaptured(character.Name);
+                        command.Captured = _teamServices.IsCaptured(character.Name);
                        
                         try
                         {
@@ -110,25 +112,7 @@ namespace WebAPI.Controllers.v1
             return Ok(await Mediator.Send(new DeleteCharacterCommand { Id = id }));
         }
 
-        private static string GetMD5Hash(string input)
-        {
-            using (var md5 = System.Security.Cryptography.MD5.Create())
-            {
-                var inputBytes = System.Text.Encoding.ASCII.GetBytes(input);
-                var hashBytes = md5.ComputeHash(inputBytes);
-
-                var sb = new StringBuilder();
-                foreach (var b in hashBytes)
-                {
-                    sb.Append(b.ToString("X2"));
-                }
-
-                return sb.ToString().ToLower();
-            }
-        }
-
-       
-
+     
     }
   
 }

@@ -1,9 +1,4 @@
 ﻿using Application.DTOs;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Persistence.Interfaces
 {
@@ -19,6 +14,9 @@ namespace Persistence.Interfaces
         public Task<List<CharacterHeroDTO?>> SearchByID(int characters);
         public Task<List<TeamsDTO?>> GetAllTeams();
         public Task<int> SearchByIDTeamIDHero(int idHero, int idTeam);
+        public string GetMD5Hash(string input);
+        public Task<List<CharacterHeroDTO?>> SearchVillians();
+
 
         }
 }
