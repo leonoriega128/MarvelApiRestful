@@ -60,34 +60,43 @@ namespace Domain.Entities
         public string path { get; set; }
         public string extension { get; set; }
     }
-    public class MarvelCharacterVillianDataWrapper
+
+
+    public class StoryDataWrapper
     {
-        public MarvelCharacterVillianDataContainer Data { get; set; }
+        public int code { get; set; }
+        public string status { get; set; }
+        public string copyright { get; set; }
+        public string attributionText { get; set; }
+        public string attributionHTML { get; set; }
+        public StoryDataContainer data { get; set; }
+        public string etag { get; set; }
     }
 
-    public class MarvelCharacterVillianDataContainer
+    public class StoryDataContainer
     {
-        public MarvelCharacter[] Results { get; set; }
+        public int offset { get; set; }
+        public int limit { get; set; }
+        public int total { get; set; }
+        public int count { get; set; }
+        public List<Story> results { get; set; }
     }
 
-    public class MarvelCharacterVillian
+    public class Story
     {
         public int id { get; set; }
-        public string Name { get; set; }
-        public string? Description { get; set; }
-        public MarvelUrlImage? thumbnail { get; set; }
+        public string title { get; set; }
+        public string description { get; set; }
+        public string resourceURI { get; set; }
+        public string type { get; set; }
         public string? modified { get; set; }
-        public MarvelSeriesList Series { get; set; }
+        public Image thumbnail { get; set; }
     }
 
-    public class MarvelStories
+    public class Image
     {
-        public MarvelStories[] Items { get; set; }
-    }
-
-    public class MarvelSeriesStories
-    {
-        public string Name { get; set; }
+        public string path { get; set; }
+        public string extension { get; set; }
     }
 
 }

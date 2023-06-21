@@ -60,15 +60,16 @@ namespace Persistence.Services
                             Name = c.Name
                         };
             var result = await query.ToListAsync();
-            if(result.Count > 0) { 
-            if (VillainFilter(result.FirstOrDefault().Name))
+            if (result.Count > 0)
             {
-                return result;
-            }
-            else
-            {
-                return null;
-            }
+                if (VillainFilter(result.FirstOrDefault().Name))
+                {
+                    return result;
+                }
+                else
+                {
+                    return null;
+                }
             }
             else
             {
@@ -196,11 +197,31 @@ namespace Persistence.Services
                             Description = c.Description,
                             UrlImage = c.UrlImage,
                             MarvelID = c.MarvelID,
-                            
+
                         };
             var result = await query.ToListAsync();
             return result;
         }
 
+
+        public string getUrl(string opcion)
+        {
+            var publicKey = "555f06eb9d76cc0ee29e880bb815014a";
+            var privateKey = "818aa04060ee52f3441103f9daa9ba321f224227";
+            var timestamp = 2;
+            var hash = GetMD5Hash(timestamp + privateKey + publicKey);
+            if (opcion.Equals("CharacterByid"))
+            {
+                var url = $"https://gateway.marvel.com:443/v1/public/characters/1012080?ts={timestamp}&apikey={publicKey}&hash={hash}";
+                return url;
+            }
+            else
+            {
+                var url = $"https://gateway.marvel.com:443/v1/public/characters/1012080/stories?ts={timestamp}&apikey={publicKey}&hash={hash}";
+                return url;
+            }
+        }
+
     }
+    
 }

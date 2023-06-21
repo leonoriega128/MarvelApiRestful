@@ -16,6 +16,8 @@ namespace Persistence.Interfaces
         public Task<int> SearchByIDTeamIDHero(int idHero, int idTeam);
         public string GetMD5Hash(string input);
         public Task<List<CharacterHeroDTO?>> SearchVillians();
+        public bool VillainFilter(string villan);
+        public string getUrl(string opcion);
 
 
         }

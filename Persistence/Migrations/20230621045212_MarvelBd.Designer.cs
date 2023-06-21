@@ -12,8 +12,8 @@ using Persistence.Context;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230621013543_MarvelMigracionDb")]
-    partial class MarvelMigracionDb
+    [Migration("20230621045212_MarvelBd")]
+    partial class MarvelBd
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
