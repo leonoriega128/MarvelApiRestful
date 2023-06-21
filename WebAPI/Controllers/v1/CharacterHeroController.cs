@@ -23,7 +23,12 @@ namespace WebAPI.Controllers.v1
         }
 
        
-
+        /// <summary>
+        /// Se recibe el nombre del heroe y controla si son mayores a 4 caracteres, si es asi se conecta con la api para 
+        /// traer informacion del heroe y guardarlos en la tabla "characters"
+        /// </summary>
+        /// <param name="characters"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("GetCharacter")]
         public async Task<IActionResult> GetCharacter(string characters)
@@ -96,6 +101,12 @@ namespace WebAPI.Controllers.v1
             }
         }
 
+          /// <summary>
+          /// Endpoint para modificar datos del heroe en la tabla Character
+          /// </summary>
+          /// <param name="id"></param>
+          /// <param name="command"></param>
+          /// <returns></returns>
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(int id, UpdateCharacterCommand command)
         {
@@ -105,7 +116,11 @@ namespace WebAPI.Controllers.v1
             return Ok(await Mediator.Send(command));
         }
 
-
+        /// <summary>
+        /// Endpoint para eliminar heroe por id en la tabla Character
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {

@@ -19,7 +19,11 @@ namespace WebAPI.Controllers.v1
             _teamServices = context;
         }
 
-
+        /// <summary>
+        /// Busca heroes que hayann sido cargados en la base para los que contengan algun parecido con el nombre
+        /// </summary>
+        /// <param name="characters"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("GetCharactersByName")]
         public async Task<IActionResult> GetCharacter(string characters)
@@ -36,6 +40,10 @@ namespace WebAPI.Controllers.v1
             
         }
 
+        /// <summary>
+        /// Trae todos los heroes que hayan sido cargados en la base de datos
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [Route("GetAllCharacters")]
         public async Task<IActionResult> GetAllCharacters()
@@ -44,7 +52,12 @@ namespace WebAPI.Controllers.v1
             return Ok(response);
         }
 
-
+        /// <summary>
+        /// Crea un equipo nuevo de super heroes y si se lo desea agrega los integrantes del equipo, 
+        /// asignandole id de heroe de cada uno
+        /// </summary>
+        /// <param name="createNameRequest"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("CreateName")]
         public async Task<IActionResult> CreateName(CreateNameRequest createNameRequest)
@@ -85,6 +98,10 @@ namespace WebAPI.Controllers.v1
             }
         }
 
+        /// <summary>
+        /// muestra los equipos de rescate con los integrantes y sus atributos mas fuertes 
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [Route("RescueTeam")]
         public async Task<IActionResult> RescueTeam()
@@ -93,7 +110,12 @@ namespace WebAPI.Controllers.v1
             return Ok(response);
         }
 
-
+        /// <summary>
+        /// modifica el nombre del equipo
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="command"></param>
+        /// <returns></returns>
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(int id, UpdateTeamsCommand command)
         {
@@ -103,14 +125,23 @@ namespace WebAPI.Controllers.v1
             return Ok(await Mediator.Send(command));
         }
 
-
+        /// <summary>
+        /// elimina el equipo 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete("Team/{id}")]
         public async Task<IActionResult> Delete(int id)
         {
             return Ok(await Mediator.Send(new DeleteTeamsCommand { Id = id }));
         }
 
-
+        /// <summary>
+        /// elimina un integrante del equipo
+        /// </summary>
+        /// <param name="idHero"></param>
+        /// <param name="idTeam"></param>
+        /// <returns></returns>
         [HttpDelete("HeroIntoTeam/{idTeam}/{idHero}")]
         public async Task<IActionResult> HeroIntoTeam(int idHero, int idTeam)
         {
